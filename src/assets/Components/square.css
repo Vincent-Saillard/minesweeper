@@ -1,0 +1,55 @@
+.square {
+  width: 30px;
+  height: 30px;
+  /* border: 1px solid white; */
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 30px;
+}
+
+.darkGrey:hover {
+  /* cursor: url("../pictures/pickaxe.png"), auto; */
+  cursor: crosshair;
+}
+
+/* .lightGrey {
+  background-color: lightgray;
+} */
+
+.light0 {
+  background: url("../pictures/light0.png") no-repeat center center;
+  background-size: cover;
+}
+.light1 {
+  background: url("../pictures/light1.png") no-repeat center center;
+  background-size: cover;
+}
+.light2 {
+  background: url("../pictures/light2.png") no-repeat center center;
+  background-size: cover;
+}
+.light3 {
+  background: url("../pictures/light3.png") no-repeat center center;
+  background-size: cover;
+}
+
+.dark0 {
+  background: url("../pictures/dark0.png") no-repeat center center;
+  background-size: cover;
+}
+.dark1 {
+  background: url("../pictures/dark1.png") no-repeat center center;
+  background-size: cover;
+}
+.dark2 {
+  background: url("../pictures/dark2.png") no-repeat center center;
+  background-size: cover;
+}
+.dark3 {
+  background: url("../pictures/dark3.png") no-repeat center center;
+  background-size: cover;
+}
