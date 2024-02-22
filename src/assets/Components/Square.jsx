@@ -9,6 +9,10 @@ const Square = ({
   width,
   height,
   setEndGame,
+  numberOfClicks,
+  setNumberOfClicks,
+  startTimer,
+  pauseTimer,
 }) => {
   // get status of block from blockStatus state
   // get block coords
@@ -62,6 +66,7 @@ const Square = ({
       }
       setBlockStatus(newBlockStatusList);
       setEndGame("lost");
+      pauseTimer();
     }
     // if content > 0 reveal only this block
     if (blockContentToReveal > 0) {
@@ -150,6 +155,10 @@ const Square = ({
     // if status = "" reveal block by coords
     if (!status) {
       revealBlockByCoords(Xcoord, Ycoord);
+      if (numberOfClicks === 0) {
+        startTimer();
+      }
+      setNumberOfClicks(numberOfClicks + 1);
     }
     // console.log(`left click / ${blockCoords} / ${status}`);
   };
@@ -163,9 +172,17 @@ const Square = ({
     if (!status) {
       newBlockStatusList[blockPosition].status = "avoid";
       setBlockStatus(newBlockStatusList);
+      if (numberOfClicks === 0) {
+        startTimer();
+      }
+      setNumberOfClicks(numberOfClicks + 1);
     } else if (status === "avoid") {
       newBlockStatusList[blockPosition].status = "";
       setBlockStatus(newBlockStatusList);
+      if (numberOfClicks === 0) {
+        startTimer();
+      }
+      setNumberOfClicks(numberOfClicks + 1);
     }
     // console.log(`aux click / ${blockCoords} / ${status}`);
   };

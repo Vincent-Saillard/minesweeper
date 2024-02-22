@@ -13,6 +13,10 @@ function App() {
   const [refresh, setRefresh] = useState(true);
   const [endGame, setEndGame] = useState("");
   const [optionModal, setOptionModal] = useState(false);
+  const [rulesModal, setRulesModal] = useState(false);
+  const [numberOfClicks, setNumberOfClicks] = useState(0);
+  const [timer, setTimer] = useState(0);
+  const [timeInterval, setTimeInterval] = useState(null);
 
   const handleWidthChange = (event) => {
     const value = event.target.value;
@@ -49,6 +53,7 @@ function App() {
     setBlockStatus(listOfStatus);
     setIsLoading(false);
     setEndGame("");
+    setNumberOfClicks(0);
   }, [refresh]);
 
   // get the number of flags (avoid status) from blockStatus List
@@ -66,10 +71,6 @@ function App() {
   const minesRamaining = numberOfMines - numberOfFlags;
   const numberOfSafeBlocks = width * height - numberOfMines;
 
-  if (numberOfSafeBlocks === numberOfDisp && minesRamaining === 0 && !endGame) {
-    setEndGame("victory");
-  }
-
   // submit function for options
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -78,7 +79,57 @@ function App() {
     console.log("num mines>>>" + numberOfMines);
     setOptionModal(false);
     setRefresh(!refresh);
+    resetTimer();
   };
+
+  // TIMER FUNCTIONS
+  // timer starts when number of blocks displayed > 0, and stops...
+  // - when timer reaches 3600secs ==> endgame lost
+  // - when endGame exists (victory or loss)
+  // - when optionModal or rulesModal exists
+  // timer should be reset
+  // - when number of blocks displayed = 0
+
+  // Function to start the timer
+  const startTimer = () => {
+    // Use setInterval to update the timer every 1000 milliseconds (1 second)
+    setTimeInterval(
+      setInterval(() => {
+        // Update the timer by incrementing the previous value by 1
+        setTimer((prev) => prev + 1);
+      }, 1000)
+    );
+  };
+
+  // Function to pause the timer
+  const pauseTimer = () => {
+    // Clear the interval to stop the timer from updating
+    clearInterval(timeInterval);
+  };
+
+  // Function to reset the timer
+  const resetTimer = () => {
+    // Reset the timer value to 0
+    setTimer(0);
+    // Clear the interval to stop the timer
+    clearInterval(timeInterval);
+  };
+
+  if (timer === 3600) {
+    setTimer(0);
+    setEndGame("lost");
+    pauseTimer();
+  }
+
+  if (numberOfSafeBlocks === numberOfDisp && minesRamaining === 0 && !endGame) {
+    setEndGame("victory");
+    pauseTimer();
+  }
+
+  // transform timer in seconds in mm:ss format
+  const minutes = "0" + Math.floor(timer / 60);
+  const seconds = "0" + (timer % 60);
+  const formatedTimer = `${minutes.slice(-2)}:${seconds.slice(-2)}`;
 
   return (
     <>
@@ -87,7 +138,13 @@ function App() {
           <div className="title">
             <h1>The Mine Sweeper</h1>
           </div>
-          <div className="options" onClick={() => setOptionModal(!optionModal)}>
+          <div
+            className="options"
+            onClick={() => {
+              setOptionModal(true);
+              pauseTimer();
+            }}
+          >
             Options
           </div>
         </div>
@@ -101,12 +158,15 @@ function App() {
                 Remaining Monsters : {minesRamaining}
               </p>
             </div>
-            <div className="countdownContainer"></div>
+            <div className="countdownContainer">
+              <p>{formatedTimer}</p>
+            </div>
             <div className="rightInfoBar">
               <div
                 onClick={() => {
                   setRefresh(!refresh);
                   setEndGame("");
+                  resetTimer();
                 }}
                 className="restartButton"
               >
@@ -131,6 +191,10 @@ function App() {
                           height={height}
                           key={index2}
                           setEndGame={setEndGame}
+                          numberOfClicks={numberOfClicks}
+                          setNumberOfClicks={setNumberOfClicks}
+                          startTimer={startTimer}
+                          pauseTimer={pauseTimer}
                         />
                       );
                     })}
@@ -153,13 +217,18 @@ function App() {
                 <div className="optionsContainer">
                   <div
                     className="closing"
-                    onClick={() => setOptionModal(false)}
+                    onClick={() => {
+                      setOptionModal(false);
+                      if (numberOfClicks > 0) {
+                        startTimer();
+                      }
+                    }}
                   >
                     X
                   </div>
                   <p>Options</p>
                   <form onSubmit={handleSubmit}>
-                    <label for="width">Number of blocks in width</label>
+                    <label htmlFor="width">Number of blocks in width</label>
                     <input
                       type="range"
                       min={5}
@@ -168,7 +237,7 @@ function App() {
                       value={width}
                       onChange={handleWidthChange}
                     />
-                    <label for="height">Number of blocks in width</label>
+                    <label htmlFor="height">Number of blocks in width</label>
                     <input
                       type="range"
                       min={5}
@@ -177,7 +246,7 @@ function App() {
                       value={height}
                       onChange={handleHeightChange}
                     />
-                    <label for="mines">Number of blocks in width</label>
+                    <label htmlFor="mines">Number of blocks in width</label>
                     <input
                       type="range"
                       min={1}
