@@ -1,49 +1,253 @@
+body {
+  background: url("../src/assets/pictures/backbody.jpg") repeat;
+  background-size: 300px;
+  font-family: "MedievalSharp", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .container {
   margin: 0 auto;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: fit-content;
   width: 1200px;
+}
+
+header {
+  background-color: #010010;
+  /* box-shadow: 0px 0px 10px; */
+}
+
+.logoContainer,
+.sideButtons {
+  flex: 1;
+  /* border: 1px solid cyan; */
+}
+.title {
+  flex: 3;
+  text-align: center;
+  /* border: 1px solid cyan; */
+}
+
+h1 {
+  font-family: "Protest Strike", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: -webkit-linear-gradient(
+    rgb(248, 211, 110),
+    goldenrod,
+    rgb(210, 121, 6)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 50px;
+  text-shadow: rgba(207, 115, 3, 0.4) 1px 0 10px;
+}
+
+header img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.borderBottomHeader {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to left, #fa7b02, #ffd342, #fa7b02);
 }
 
 header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 5px 20px;
+}
+
+.sideButtons {
+  display: flex;
+  /* gap: 20px; */
+  justify-content: flex-end;
+  /* border: 1px solid cyan; */
+}
+.sideButtonsBorder {
+  border-radius: 50px;
+  /* border: 1px solid yellow; */
+  background: linear-gradient(
+    45deg,
+    goldenrod,
+    rgb(241, 214, 146),
+    goldenrod,
+    rgb(148, 107, 3),
+    rgb(218, 144, 32),
+    goldenrod,
+    rgb(223, 196, 128),
+    goldenrod
+  );
+  padding: 2px;
+}
+.sideButtonsBorder > div {
+  display: flex;
+  gap: 20px;
+  /* border: 1px solid red; */
+  padding: 10px 15px;
+  border-radius: 50px;
+  background-color: #010010;
 }
 
 .options {
-  padding: 10px 20px;
-  background-color: grey;
+  height: fit-content;
+  width: fit-content;
 }
 .options:hover {
   cursor: pointer;
+}
+.gearIcon {
+  color: goldenrod;
+  font-size: 20px;
+}
+
+main .container {
+  border-left: 5px solid rgb(14, 14, 14);
+  border-right: 5px solid rgb(14, 14, 14);
+  box-sizing: content-box;
 }
 
 .infobar {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
-  border: 1px solid orange;
-  padding: 10px 0px;
+  gap: 10px;
+  height: 80px;
+  /* border: 1px solid orange; */
+  /* padding: 10px 0px; */
+  background: url("../src/assets/pictures/infoback.jpg");
+  background-size: 100px;
+  border-bottom: 4px solid goldenrod;
+}
+
+.leftInfoBar,
+.countdownContainer,
+.rightInfoBar {
+  flex: 1;
 }
 
 .countdownContainer {
-  height: 60px;
-  width: 100px;
-  background-color: azure;
+  /* height: 60px; */
+  /* width: 100px; */
+  /* background-color: azure; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.countdownBorder {
+  padding: 10px 20px;
+  width: 120px;
+  /* background-color: #010010; */
+  background: radial-gradient(#0b092d, #010010);
+  color: goldenrod;
+  border: 3px solid goldenrod;
+  position: relative;
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.7);
+  text-align: center;
+}
+.corners {
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  z-index: 1;
+  /* transform: rotate(45deg); */
+  background-color: goldenrod;
+}
+.tl {
+  top: -7px;
+  left: -7px;
+}
+.tr {
+  top: -7px;
+  right: -7px;
+}
+.bl {
+  bottom: -7px;
+  left: -7px;
+}
+.br {
+  bottom: -7px;
+  right: -7px;
+}
+
+.leftInfoBar {
+  clip-path: polygon(0 0, 100% 0%, 92% 50%, 100% 100%, 0% 100%);
+  background: linear-gradient(
+    45deg,
+    goldenrod,
+    rgb(241, 214, 146),
+    goldenrod,
+    rgb(148, 107, 3),
+    rgb(218, 144, 32),
+    goldenrod,
+    rgb(223, 196, 128),
+    goldenrod
+  );
+  height: 70%;
+  position: relative;
+}
+
+.infoContainer {
+  /* background-color: #00507b; */
+  background: linear-gradient(
+    45deg,
+    #00507b,
+    #1a7bae,
+    #00507b,
+    #033d5c,
+    #00357b,
+    #00507b,
+    #4b91b8,
+    #00507b
+  );
+  /* padding: 10px 20px; */
+  height: 85%;
+  width: 97%;
+  top: 4px;
+  left: 0px;
+  position: absolute;
+  clip-path: polygon(0 0, 100% 0%, 93% 50%, 100% 100%, 0% 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* font-weight: bold; */
+  color: goldenrod;
+}
+
+.rightInfoBar {
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%, 8% 50%);
+  background: linear-gradient(
+    45deg,
+    goldenrod,
+    rgb(241, 214, 146),
+    goldenrod,
+    rgb(148, 107, 3),
+    rgb(218, 144, 32),
+    goldenrod,
+    rgb(223, 196, 128),
+    goldenrod
+  );
+  height: 70%;
+  position: relative;
 }
 
 .gamingArea {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   width: 100%;
-  height: fit-content;
+  height: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   position: relative;
+  background: url("../src//assets//pictures/backgamingarea.jpg");
+  background-size: 300px;
 }
 
 .line {
@@ -59,8 +263,30 @@ header .container {
 }
 
 .restartButton {
-  background-color: aquamarine;
-  padding: 10px 20px;
+  /* background-color: #00507b; */
+  background: linear-gradient(
+    45deg,
+    #00507b,
+    #1a7bae,
+    #00507b,
+    #033d5c,
+    #00357b,
+    #00507b,
+    #4b91b8,
+    #00507b
+  );
+  /* padding: 10px 20px; */
+  height: 85%;
+  width: 97%;
+  top: 4px;
+  right: 0px;
+  position: absolute;
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%, 7% 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: goldenrod;
 }
 .restartButton:hover {
   cursor: pointer;
@@ -88,4 +314,17 @@ header .container {
 }
 .endingMessage p {
   text-align: center;
+}
+
+footer {
+  /* background: url("../src/assets/pictures/infoback.jpg");
+  background-size: 100px; */
+  background-color: #010010;
+  height: 15vh;
+}
+
+.borderTopFooter {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(to left, #fa7b02, #ffd342, #fa7b02);
 }

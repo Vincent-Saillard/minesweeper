@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faGear, faCircleInfo } from "@fortawesome/free-solid-svg-icons";
+library.add(faGear, faCircleInfo);
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./App.css";
 import { minelandGenerator } from "./assets/script.js/minelandGenerator.js";
 import Square from "../src/assets/Components/Square.jsx";
+import logo from "../src/assets/pictures/logo.jpg";
 
 function App() {
   const [fullTable, setFullTable] = useState([]);
@@ -129,37 +134,68 @@ function App() {
   // transform timer in seconds in mm:ss format
   const minutes = "0" + Math.floor(timer / 60);
   const seconds = "0" + (timer % 60);
-  const formatedTimer = `${minutes.slice(-2)}:${seconds.slice(-2)}`;
+  const formatedTimer = `${minutes.slice(-2)} : ${seconds.slice(-2)}`;
 
   return (
     <>
       <header>
         <div className="container">
-          <div className="title">
-            <h1>The Mine Sweeper</h1>
+          <div className="logoContainer">
+            {/* <h1>The Mine Sweeper</h1> */}
+            <img
+              src={logo}
+              alt="a dwarf in low poly with pick axe on his shoulder, elbowed on title Mine Sweeper"
+            />
           </div>
-          <div
-            className="options"
-            onClick={() => {
-              setOptionModal(true);
-              pauseTimer();
-            }}
-          >
-            Options
+          <div className="title">
+            <h1>MINE SWEEPER</h1>
+          </div>
+          <div className="sideButtons">
+            <div className="sideButtonsBorder">
+              <div>
+                <div
+                  className="options"
+                  onClick={() => {
+                    setRulesModal(true);
+                    pauseTimer();
+                  }}
+                >
+                  <FontAwesomeIcon icon="circle-info" className="gearIcon" />
+                </div>
+                <div
+                  className="options"
+                  onClick={() => {
+                    setOptionModal(true);
+                    pauseTimer();
+                  }}
+                >
+                  <FontAwesomeIcon icon="gear" className="gearIcon" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div className="borderBottomHeader"></div>
       </header>
       <main>
         <div className="container">
           <section className="infobar">
             <div className="leftInfoBar">
-              <p>Number of Monsters : {numberOfMines}</p>
-              <p className={minesRamaining < 0 ? "red" : ""}>
-                Remaining Monsters : {minesRamaining}
-              </p>
+              <div className="infoContainer">
+                <p>Number of Monsters : {numberOfMines}</p>
+                <p className={minesRamaining < 0 ? "red" : ""}>
+                  Remaining Monsters : {minesRamaining}
+                </p>
+              </div>
             </div>
             <div className="countdownContainer">
-              <p>{formatedTimer}</p>
+              <div className="countdownBorder">
+                <div className="corners tl"></div>
+                <div className="corners tr"></div>
+                <div className="corners bl"></div>
+                <div className="corners br"></div>
+                <p>{formatedTimer}</p>
+              </div>
             </div>
             <div className="rightInfoBar">
               <div
@@ -170,7 +206,7 @@ function App() {
                 }}
                 className="restartButton"
               >
-                New Game
+                <p>New Game</p>
               </div>
             </div>
           </section>
@@ -263,6 +299,9 @@ function App() {
           </section>
         </div>
       </main>
+      <footer>
+        <div className="borderTopFooter"></div>
+      </footer>
     </>
   );
 }
