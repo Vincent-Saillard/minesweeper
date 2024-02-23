@@ -4,6 +4,7 @@ body {
   font-family: "MedievalSharp", cursive;
   font-weight: 400;
   font-style: normal;
+  /* height: 100vh; */
 }
 
 .container {
@@ -107,8 +108,8 @@ header .container {
 }
 
 main .container {
-  border-left: 5px solid rgb(14, 14, 14);
-  border-right: 5px solid rgb(14, 14, 14);
+  border-left: 5px solid goldenrod;
+  border-right: 5px solid goldenrod;
   box-sizing: content-box;
 }
 
@@ -290,6 +291,17 @@ main .container {
 }
 .restartButton:hover {
   cursor: pointer;
+  background: linear-gradient(
+    45deg,
+    #007b1b,
+    #1aae21,
+    #007b12,
+    #155c03,
+    #007b0e,
+    #007b08,
+    #56b84b,
+    #007b00
+  );
 }
 
 .endGameModal {
@@ -305,15 +317,189 @@ main .container {
 }
 
 .endingMessage {
-  width: 200px;
-  height: 50px;
-  background-color: white;
+  width: 400px;
+  height: 500px;
+  /* background-color: white; */
+  background: url("../src/assets/pictures/scroll.png") center no-repeat;
+  background-size: 380px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
+  /* box-shadow: 0 0 20px rgb(0, 0, 0); */
+  padding: 110px 60px;
 }
 .endingMessage p {
   text-align: center;
+  margin-bottom: 20px;
+}
+.endingMessage img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  mix-blend-mode: darken;
+}
+.retry {
+  width: 60%;
+  text-align: center;
+  line-height: 25px;
+}
+
+.optionsContainer {
+  width: 400px;
+  height: 500px;
+  /* background-color: white; */
+  background: url("../src/assets/pictures/scroll.png") center no-repeat;
+  background-size: 380px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* box-shadow: 0 0 20px rgb(0, 0, 0); */
+  /* border: 1px solid yellow; */
+  padding: 100px 60px;
+  color: rgba(43, 24, 2, 0.737);
+  text-align: center;
+}
+.endGameModal .closing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+  /* width: 100%; */
+  font-weight: bold;
+  height: 20px;
+  width: 30px;
+  border-radius: 10px;
+  padding-top: 2px;
+  background-color: rgba(43, 24, 2, 0.737);
+  color: #e7c790;
+  margin-bottom: 20px;
+}
+.endGameModal .closing :hover {
+  cursor: pointer;
+}
+.rulesContainer > p,
+.optionsContainer > p {
+  font-weight: bold;
+  /* margin-bottom: 20px; */
+}
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+}
+.inputButton {
+  /* width: 25%; */
+  height: 30px;
+  border-radius: 0px;
+  clip-path: polygon(100% 0, 92% 50%, 100% 100%, 0% 100%, 8% 50%, 0% 0%);
+  border: 3px solid goldenrod;
+  background: linear-gradient(
+    45deg,
+    #00507b,
+    #1a7bae,
+    #00507b,
+    #033d5c,
+    #00357b,
+    #00507b,
+    #4b91b8,
+    #00507b
+  );
+  color: goldenrod;
+  font-family: "MedievalSharp", cursive;
+  font-weight: bold;
+}
+.inputButton:hover {
+  background: linear-gradient(
+    45deg,
+    #007b1b,
+    #1aae21,
+    #007b12,
+    #155c03,
+    #007b0e,
+    #007b08,
+    #56b84b,
+    #007b00
+  );
+  cursor: pointer;
+}
+form > div {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 10px;
+  width: 100%;
+  /* border: 1px solid red; */
+}
+form > div > p {
+  flex: 1;
+}
+form > div > input {
+  flex: 4;
+}
+form span {
+  font-weight: bold;
+}
+
+.rulesContainer {
+  width: 400px;
+  height: 500px;
+  /* background-color: white; */
+  background: url("../src/assets/pictures/scroll.png") center no-repeat;
+  background-size: 380px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* box-shadow: 0 0 20px rgb(0, 0, 0); */
+  /* border: 1px solid yellow; */
+  padding: 100px 60px;
+  color: rgba(43, 24, 2, 0.737);
+  text-align: center;
+}
+.separationLine {
+  height: 2px;
+  /* width: 80%; */
+  background-color: rgb(114, 80, 40);
+  margin-top: 17px;
+  margin-left: 30px;
+  margin-right: 30px;
+  position: relative;
+}
+.separationLine .corners {
+  transform: rotate(45deg);
+  background-color: rgb(114, 80, 40);
+}
+.left {
+  left: -5px;
+  top: -4px;
+}
+.right {
+  right: -5px;
+  top: -4px;
+}
+.slidingContainer {
+  height: 210px;
+  width: 100%;
+  margin-top: 20px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(43, 24, 2, 0.5) rgba(43, 24, 2, 0);
+}
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
+.slidingContainer span {
+  font-weight: bold;
+}
+h2 {
+  margin: 10px 0px;
 }
 
 footer {
@@ -321,10 +507,42 @@ footer {
   background-size: 100px; */
   background-color: #010010;
   height: 15vh;
+  display: flex;
+  flex-direction: column;
+  color: goldenrod;
+  font-family: "Protest Strike", sans-serif;
+  text-align: center;
+}
+footer p {
+  font-weight: 400;
+  font-style: normal;
+  background: -webkit-linear-gradient(
+    rgb(248, 211, 110),
+    goldenrod,
+    rgb(210, 121, 6)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: rgba(207, 115, 3, 0.4) 1px 0 10px;
+  margin-bottom: 20px;
 }
 
 .borderTopFooter {
   width: 100%;
   height: 5px;
   background: linear-gradient(to left, #fa7b02, #ffd342, #fa7b02);
+  margin-bottom: 20px;
+}
+
+footer img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.logosContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }

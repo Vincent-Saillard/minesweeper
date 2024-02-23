@@ -7,6 +7,11 @@ import "./App.css";
 import { minelandGenerator } from "./assets/script.js/minelandGenerator.js";
 import Square from "../src/assets/Components/Square.jsx";
 import logo from "../src/assets/pictures/logo.jpg";
+import winpic from "../src/assets/pictures/winpic.jpg";
+import lostpic from "../src/assets/pictures/lostpic.jpg";
+import logoPerso from "../src/assets/pictures/logo-perso.png";
+import linkedin from "../src/assets/pictures/linkedin.png";
+import github from "../src/assets/pictures/github.png";
 
 function App() {
   const [fullTable, setFullTable] = useState([]);
@@ -82,6 +87,9 @@ function App() {
     console.log("width>>>" + width);
     console.log("height>>>" + height);
     console.log("num mines>>>" + numberOfMines);
+    if (numberOfMines >= width * height) {
+      setNumberOfMines(width * height - 1);
+    }
     setOptionModal(false);
     setRefresh(!refresh);
     resetTimer();
@@ -157,6 +165,7 @@ function App() {
                   className="options"
                   onClick={() => {
                     setRulesModal(true);
+                    setOptionModal(false);
                     pauseTimer();
                   }}
                 >
@@ -166,6 +175,7 @@ function App() {
                   className="options"
                   onClick={() => {
                     setOptionModal(true);
+                    setRulesModal(false);
                     pauseTimer();
                   }}
                 >
@@ -182,9 +192,9 @@ function App() {
           <section className="infobar">
             <div className="leftInfoBar">
               <div className="infoContainer">
-                <p>Number of Monsters : {numberOfMines}</p>
+                <p>Number of Goblins : {numberOfMines}</p>
                 <p className={minesRamaining < 0 ? "red" : ""}>
-                  Remaining Monsters : {minesRamaining}
+                  Remaining Goblins : {minesRamaining}
                 </p>
               </div>
             </div>
@@ -242,9 +252,32 @@ function App() {
                 <div className="endingMessage">
                   <p>
                     {endGame === "victory"
-                      ? "Congratulations, You won ! Try again ?"
-                      : "You lost, try again ?"}
+                      ? "Congratulations, You won !"
+                      : "Unfortunately, You lost ..."}
                   </p>
+                  <div>
+                    {endGame === "victory" ? (
+                      <img
+                        src={winpic}
+                        alt="happy dwarf in sepia, jumping on a gold pile"
+                      />
+                    ) : (
+                      <img
+                        src={lostpic}
+                        alt="dead dwarf on the floor with a gobelin standing on top of him"
+                      />
+                    )}
+                  </div>
+                  <div
+                    className="inputButton retry"
+                    onClick={() => {
+                      setRefresh(!refresh);
+                      setEndGame("");
+                      resetTimer();
+                    }}
+                  >
+                    Try again ?
+                  </div>
                 </div>
               </div>
             ) : null}
@@ -260,39 +293,127 @@ function App() {
                       }
                     }}
                   >
-                    X
+                    <p>X</p>
                   </div>
-                  <p>Options</p>
+                  <p>✣ OPTIONS ✣</p>
                   <form onSubmit={handleSubmit}>
-                    <label htmlFor="width">Number of blocks in width</label>
+                    <label htmlFor="width">
+                      Number of blocks in width : <span>{width}</span>
+                    </label>
+                    <div>
+                      <p>5</p>
+                      <input
+                        type="range"
+                        min={5}
+                        max={40}
+                        id="width"
+                        value={width}
+                        onChange={handleWidthChange}
+                      />
+                      <p>40</p>
+                    </div>
+                    <label htmlFor="height">
+                      Number of blocks in height : <span>{height}</span>
+                    </label>
+                    <div>
+                      <p>5</p>
+                      <input
+                        type="range"
+                        min={5}
+                        max={20}
+                        id="height"
+                        value={height}
+                        onChange={handleHeightChange}
+                      />
+                      <p>20</p>
+                    </div>
+                    <label htmlFor="mines">
+                      Number of Goblins : <span>{numberOfMines}</span>
+                    </label>
+                    <div>
+                      <p>1</p>
+                      <input
+                        type="range"
+                        min={1}
+                        max={width * height - 1}
+                        id="mines"
+                        value={numberOfMines}
+                        onChange={handleMinesChange}
+                      />
+                      <p>{width * height - 1}</p>
+                    </div>
                     <input
-                      type="range"
-                      min={5}
-                      max={40}
-                      id="width"
-                      value={width}
-                      onChange={handleWidthChange}
+                      type="submit"
+                      value="Modify"
+                      className="inputButton"
                     />
-                    <label htmlFor="height">Number of blocks in width</label>
-                    <input
-                      type="range"
-                      min={5}
-                      max={20}
-                      id="height"
-                      value={height}
-                      onChange={handleHeightChange}
-                    />
-                    <label htmlFor="mines">Number of blocks in width</label>
-                    <input
-                      type="range"
-                      min={1}
-                      max={width * height - 1}
-                      id="mines"
-                      value={numberOfMines}
-                      onChange={handleMinesChange}
-                    />
-                    <input type="submit" value="Modify" />
                   </form>
+                </div>
+              </div>
+            ) : null}
+            {rulesModal ? (
+              <div className="endGameModal">
+                <div className="rulesContainer">
+                  <div
+                    className="closing"
+                    onClick={() => {
+                      setRulesModal(false);
+                      if (numberOfClicks > 0) {
+                        startTimer();
+                      }
+                    }}
+                  >
+                    <p>X</p>
+                  </div>
+                  <p>✣ RULES ✣</p>
+                  <div className="separationLine">
+                    <div className="corners left"></div>
+                    <div className="corners right"></div>
+                  </div>
+                  <div className="slidingContainer">
+                    <h2>
+                      <span>Clean the board, avoid Geobelins !</span>
+                    </h2>
+                    <p>
+                      You have been asked to dig a new gallery in the mine, but
+                      it's full of Goblins.
+                    </p>
+                    <p>
+                      You win if you manage to destroy all the blocks of rock
+                      except those where the Goblins are hidden which you must
+                      mark with a 🚩.
+                    </p>
+                    <p>
+                      You lose if you discover a Goblin or if the timer reaches
+                      one hour.
+                    </p>
+                    <br></br>
+                    <ul>
+                      Each time you <span>break a block</span>, using{" "}
+                      <span>left click </span>button, you will discover either :
+                    </ul>
+                    <li>🧌 : A Gobelin * sigh *</li>
+                    <li>
+                      {" "}
+                      <span>A number</span> : indicating the quantity of Goblins
+                      among the nine adjacent squares.
+                    </li>
+                    <li>
+                      <span>Emptyness</span> : which means there is no Gobelin
+                      around, then nine adjacent blocks are immediately
+                      destroyed too.
+                    </li>
+                    <p>
+                      You can use <span>right click</span> button to add or
+                      remove a 🚩 where a Gobelin is supposed to be located.
+                    </p>
+                    <br></br>
+                    <p>
+                      In the "Option" menu, you can modify the width and the
+                      height of the board (maximum 40 and 20 blocks
+                      respectively), and also the number of Gobelins.
+                    </p>
+                  </div>
                 </div>
               </div>
             ) : null}
@@ -301,6 +422,27 @@ function App() {
       </main>
       <footer>
         <div className="borderTopFooter"></div>
+        <p>
+          This game is designed by <span>VINCENT SAILLARD</span>.
+        </p>
+        <div className="logosContainer">
+          <a
+            href="https://portfolio-vincent-saillard.netlify.app/"
+            target="_blank"
+          >
+            <img src={logoPerso} alt="vincent saillard portfolio logo" />
+          </a>
+          <a href="https://github.com/Vincent-Saillard" target="_blank">
+            <img src={github} alt="github logo" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/vincent-saillard-096255a7/"
+            target="_blank"
+          >
+            <img src={linkedin} alt="linkedin logo" />
+          </a>
+        </div>
       </footer>
     </>
   );
