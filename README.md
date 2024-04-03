@@ -76,35 +76,8 @@ Timer stops/pauses wether player win/loose, or click on options/informations but
                     </p>
                 
 
-### Dependencies
-
-- react-native-async-storage
-- react-navigation/bottom-tabs
-- react-navigation/native
-- react-navigation/native-stack
-- axios
-- expo
-- expo-image-picker
-- expo-location
-- expo-status-bar
-- lottie-react-native
-- react-native
-- react-native-keyboard-aware-scroll-view
-- react-native-maps
-- react-native-toast-message
-
-### Demo
-
-![ezgif com-video-to-gif-converted](https://github.com/Vincent-Saillard/airbnb-app_react-native/assets/144067650/11b478c5-4305-492f-b160-babee2da4254)
-
-## Authors
-
+## Author
+Code and Graphic design by :
 Vincent Saillard
 
-- https://www.linkedin.com/in/vincent-saillard-096255a7/
-- https://github.com/Vincent-Saillard
-
-Le Reacteur
-
-- https://www.lereacteur.io/
 
