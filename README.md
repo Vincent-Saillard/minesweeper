@@ -30,15 +30,15 @@ Using React component and css the grid is randomly created using different textu
   <img src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/c09dae93-8afc-4089-a097-30bf1f833a5f" width="50" height="50"/>
 </div>
 
+- A timer, starting at first player's click on a tile.
+Timer stops/pauses wether player win/loose, or click on options/informations buttons, and it resets when player clicks on New Game button (changing parameters ingame will start a new game and reset timer).
 
-- Bottom tabulation : 
-  - Home screen displaying offers thanks to FlatList (to avoid mobile app to crash because of memory consumption)
-  - Map using geolocation data (app asks for user's premission)
-  - User profile page , where user can change profile picture by accessing to his gallery or taking a photo using his camera. He can also modify data such as mail, username and description.
-He can also log out, deleting token in mobile memory, he will be redirected to signIn screen automatically.
-- Offer's screens with description and minimap, accessible either from Home by clicking on an offer, or from the map by clicking on a pin.
+- Information button : displays a modal with rules.
+<img width="248" alt="image" src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/6b16e4fd-5777-4cd7-bfdd-06f8bccf4fdf">
 
-The app is connected to Le Reacteur API and will not be accessible in March 2024.
+- Settings button : displays a modal with game settings, closing will continue the ongoing game, modifying and accepting new settings will restart the game.
+<img width="250" alt="image" src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/e489d511-cd47-4b6c-a276-f168fade30dd">
+
 
 ## Getting Started
 
