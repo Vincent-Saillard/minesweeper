@@ -2,7 +2,7 @@
 <div align=center>
   <a href="https://mine-sweeper-online.netlify.app/" target="_blank"><img src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/c7e6e8e8-3096-41c3-b1ec-7eedad9b9efa" width="400" height="400" margin-bottom="10px"/></a>
 </div>
-Personnal project using React-JS
+Personnal project using React-JS / CSS
 
 ## Description
 
