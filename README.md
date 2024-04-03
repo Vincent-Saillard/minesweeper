@@ -42,7 +42,45 @@ Timer stops/pauses wether player win/loose, or click on options/informations but
 
 ## Getting Started
 
-If you want to test it on your local server, install needed dependencies with "yarn" and use "yarn dev" command, (app tested on Android)
+<p>
+                      You have been asked to dig a new gallery in the mine, but
+                      it's full of Goblins.
+                    </p>
+                    <p>
+                      You win if you manage to destroy all the blocks of rock
+                      except those where the Goblins are hidden which you must
+                      mark with a 🚩.
+                    </p>
+                    <p>
+                      You lose if you discover a Goblin or if the timer reaches
+                      one hour.
+                    </p>
+                    <br></br>
+                    <ul>
+                      Each time you <span>break a block</span>, using{" "}
+                      <span>left click </span>button, you will discover either :
+                    </ul>
+                    <li>🧌 : A Gobelin * sigh *</li>
+                    <li>
+                      {" "}
+                      <span>A number</span> : indicating the quantity of Goblins
+                      among the nine adjacent squares.
+                    </li>
+                    <li>
+                      <span>Emptyness</span> : which means there is no Gobelin
+                      around, then nine adjacent blocks are immediately
+                      destroyed too.
+                    </li>
+                    <p>
+                      You can use <span>right click</span> button to add or
+                      remove a 🚩 where a Gobelin is supposed to be located.
+                    </p>
+                    <br></br>
+                    <p>
+                      In the "Option" menu, you can modify the width and the
+                      height of the board (maximum 40 and 20 blocks
+                      respectively), and also the number of Gobelins.
+                    </p>
 
 ### Dependencies
 
