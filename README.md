@@ -1,6 +1,7 @@
 # Mine Sweeper
 <div align=center>
-<img src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/c7e6e8e8-3096-41c3-b1ec-7eedad9b9efa" width="400" height="400" margin-bottom=10px/>
+<img src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/c7e6e8e8-3096-41c3-b1ec-7eedad9b9efa" width="400" height="400" margin-bottom="10px"/>
+<div background-color="green" color="white">JOUER</div>
 </div>
 Personnal project using React-JS
 
