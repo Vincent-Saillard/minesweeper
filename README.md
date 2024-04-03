@@ -55,8 +55,7 @@ Timer stops/pauses wether player win/loose, or click on options/informations but
                       You lose if you discover a Goblin or if the timer reaches
                       one hour.
                     </p>
-                    <br></br>
-                    <ul>
+                   <ul>
                       Each time you <span>break a block</span>, using
                       <span>left click </span>button, you will discover either :
                     </ul>
@@ -70,6 +69,7 @@ Timer stops/pauses wether player win/loose, or click on options/informations but
                       around, then nine adjacent blocks are immediately
                       destroyed too.
                     </li>
+                    </br>
                     <p>
                       You can use <span>right click</span> button to add or
                       remove a 🚩 where a Gobelin is supposed to be located.
