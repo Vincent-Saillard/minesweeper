@@ -15,7 +15,6 @@ This project contains
 
 - A script randomly generating a mine field with simple parameters : Width (number of columns), Height (number of lines), and Number of mines.
 Using React component and css the grid is randomly created using different textures of tiles.
-<br/>
 <p>Tiles closed :</p>
 <div>
   <img src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/3b2f7851-9f95-4eed-b05b-b6813e2e8f80" width="50" height="50"/>
