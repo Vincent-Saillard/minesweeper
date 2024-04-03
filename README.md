@@ -57,12 +57,11 @@ Timer stops/pauses wether player win/loose, or click on options/informations but
                     </p>
                     <br></br>
                     <ul>
-                      Each time you <span>break a block</span>, using{" "}
+                      Each time you <span>break a block</span>, using
                       <span>left click </span>button, you will discover either :
                     </ul>
                     <li>🧌 : A Gobelin * sigh *</li>
                     <li>
-                      {" "}
                       <span>A number</span> : indicating the quantity of Goblins
                       among the nine adjacent squares.
                     </li>
@@ -75,12 +74,7 @@ Timer stops/pauses wether player win/loose, or click on options/informations but
                       You can use <span>right click</span> button to add or
                       remove a 🚩 where a Gobelin is supposed to be located.
                     </p>
-                    <br></br>
-                    <p>
-                      In the "Option" menu, you can modify the width and the
-                      height of the board (maximum 40 and 20 blocks
-                      respectively), and also the number of Gobelins.
-                    </p>
+                
 
 ### Dependencies
 
