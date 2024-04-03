@@ -1,7 +1,7 @@
 # Mine Sweeper
-
-<img src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/c7e6e8e8-3096-41c3-b1ec-7eedad9b9efa" width="200" height="200"/>
-
+<div align=center>
+<img src="https://github.com/Vincent-Saillard/minesweeper/assets/144067650/c7e6e8e8-3096-41c3-b1ec-7eedad9b9efa" width="400" height="400"/>
+</div>
 Personnal project using React-JS
 
 ## Description
